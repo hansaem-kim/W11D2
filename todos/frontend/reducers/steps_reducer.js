@@ -1,4 +1,4 @@
-import {RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO} from "../actions/todo_actions.js"
+import {RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP} from "../actions/step_actions.js"
 
 const initialState = {
   1: {
@@ -15,25 +15,24 @@ const initialState = {
   }
 };
 
-const todosReducer = (state = initialState, action) => {
+const stepsReducer = (state = initialState, action) => {
     Object.freeze(state);
     const newState = Object.assign({}, state);
-    // const newState = {...state}
     switch (action.type) {
-      case RECEIVE_TODOS:
+      case RECEIVE_STEPS:
         const newObject = {}; 
-        action.todos.forEach( todo => {
+        action.steps.forEach( step => {
           // debugger
-          newObject[todo.id] = todo;
+          newObject[step.id] = step;
         });
         return newObject;
 
-      case RECEIVE_TODO:
-        newState[action.todo.id] = action.todo;
+      case RECEIVE_STEP:
+        newState[action.step.id] = action.step;
         return newState;
 
-      case REMOVE_TODO:
-        delete newState[action.todo.id];
+      case REMOVE_STEP:
+        delete newState[action.step.id];
         return newState;
         
       default:
@@ -41,4 +40,4 @@ const todosReducer = (state = initialState, action) => {
     }
 };
   
-export default todosReducer;
+export default stepsReducer;
