@@ -33,6 +33,7 @@ const todosReducer = (state = initialState, action) => {
         return newState;
 
       case REMOVE_TODO:
+        debugger;
         delete newState[action.todo.id];
         return newState;
         
